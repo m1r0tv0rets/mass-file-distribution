@@ -4,8 +4,8 @@ from tkinter import *
 from tkinter import filedialog, messagebox
 
 def copy_file_to_folders():
-    source_file = source_entry.get()  # Исходный файл
-    target_folder = target_entry.get()  # Папка с целевыми подпапками
+    source_file = source_entry.get()  
+    target_folder = target_entry.get()  
 
     if not os.path.isfile(source_file):
         messagebox.showwarning("Предупреждение", "Исходный файл не найден!")
@@ -28,11 +28,9 @@ def copy_file_to_folders():
 
     messagebox.showinfo("Готово", f"Успешно скопировано в {count} папок.")
 
-# Основная форма Tkinter
 root = Tk()
 root.title("Массовая рассылка файла")
 
-# Вход полей
 Label(root, text="Источник (файл):").grid(row=0, column=0, sticky=E)
 source_entry = Entry(root, width=50)
 source_entry.grid(row=0, column=1, padx=10, pady=10)
@@ -45,9 +43,7 @@ target_entry.grid(row=1, column=1, padx=10, pady=10)
 Button(root, text="Выбрать папку",
        command=lambda: target_entry.insert(0, filedialog.askdirectory())).grid(row=1, column=2)
 
-# Кнопка старта
 start_button = Button(root, text="Отправить файл", command=copy_file_to_folders)
 start_button.grid(row=2, columnspan=3, pady=20)
 
-# Основной цикл Tkinter
 root.mainloop()
